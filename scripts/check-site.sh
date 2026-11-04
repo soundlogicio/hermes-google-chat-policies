@@ -10,10 +10,13 @@ for file in "${required[@]}"; do
 done
 
 for link in terms/ privacy/ support/ admin/; do
-  rg -q "href=\"${link}\"" index.html || { echo "Missing home link: $link" >&2; exit 1; }
+  grep -Fq "href=\"${link}\"" index.html || { echo "Missing home link: $link" >&2; exit 1; }
 done
 
-if rg -n --hidden --glob '!*.md' --glob '!.git/**' --glob '!scripts/check-site.sh' \
+if grep -RInE \
+  --exclude='*.md' \
+  --exclude-dir='.git' \
+  --exclude='check-site.sh' \
   '(BEGIN (RSA|OPENSSH|PRIVATE) KEY|AIza[0-9A-Za-z_-]{20,}|gh[pousr]_[A-Za-z0-9_]{20,}|GOOGLE_APPLICATION_CREDENTIALS=|client_secret)' .; then
   echo "Possible secret-like content found" >&2
   exit 1
