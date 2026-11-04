@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Administrator information for the internal Hermes Google Chat app."><title>Administrator information · Hermes</title><link rel="stylesheet" href="../styles.css"></head>
+  <body>
+    <header class="site-header"><div class="wrap header-inner"><a class="brand" href="../"><span class="brand-mark">H</span><span>Hermes</span></a><nav aria-label="Primary navigation"><a href="../terms/">Terms</a><a href="../privacy/">Privacy</a><a href="../support/">Support</a><a href="../admin/">Admin</a></nav></div></header>
+    <main class="wrap page"><article class="prose">
+      <p class="eyebrow">Workspace administrator reference</p><h1>Hermes administrator information</h1><p class="meta">Last updated November 3, 2026</p>
+      <p>This page documents the internal configuration at a high level. It intentionally contains no credentials, tokens, service-account keys, or private infrastructure addresses.</p>
+      <h2>Google Cloud project</h2><p><code>iovannemusic-hermes-20261103</code></p>
+      <h2>Google Chat authorization</h2><p>The Chat app uses the standard bot interaction scope for ordinary Chat interactions. Proactive message and reaction subscriptions use:</p><p><code>https://www.googleapis.com/auth/chat.app.messages.readonly</code></p><p>Google Workspace administrator approval is required for that <code>chat.app.*</code> scope. The Marketplace listing is private to the Workspace domain and is intended for authorized organizational users.</p>
+      <h2>Event delivery</h2><p>Google Workspace Events delivers Chat events through a Google Cloud Pub/Sub topic to the operator-controlled Hermes host. Hermes filters bot-originated messages and applies its response policy before deciding whether to answer.</p>
+      <h2>Space membership</h2><p>Proactive watching is limited to spaces where Hermes is a member and where the relevant Workspace authorization and subscription are active. Adding Hermes to a new space may require a membership refresh before proactive observation begins.</p>
+      <h2>Model and memory</h2><p>The deployment is intended to use an operator-controlled model endpoint. Conversation memory and retention are configuration-dependent. Administrators should review the active Hermes configuration before changing the model provider, memory behavior, or retention settings.</p>
+      <h2>Support</h2><p>For administrator questions, contact <a href="mailto:michael@iovannemusicacademy.com">michael@iovannemusicacademy.com</a>.</p>
+      <p><a href="../">Return to Hermes documentation</a></p>
+    </article></main>
+    <footer class="site-footer"><div class="wrap">© 2026 SoundLogic IO · <a href="mailto:michael@iovannemusicacademy.com">Contact support</a></div></footer>
+  </body>
+</html>
